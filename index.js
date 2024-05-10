@@ -1,4 +1,13 @@
-import app from './app';
-import db from './database';
-app.listen(4000)
-console.log('server on port 4000',4000);
+// index.js
+import app from './app.js';
+import db from './database.js';
+
+const PORT = process.env.PORT || 4000;
+
+db.then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}).catch(error => {
+    console.log('Error connecting to the database:', error);
+});

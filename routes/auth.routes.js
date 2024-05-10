@@ -1,7 +1,7 @@
 import { Router } from "express";
 const router = Router();
 
-import * as authCtrl from '../controllers/auth.controllers';
+import * as authCtrl from '../controllers/auth.controllers.js';
 
 
 router.post('/signup', authCtrl.signup);

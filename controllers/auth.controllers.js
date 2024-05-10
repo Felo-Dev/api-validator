@@ -1,7 +1,7 @@
-import User from '../models/User';
-import Role from '../models/Role';
+import User from '../models/User.js';
+import Role from '../models/Role.js';
 import jwt from 'jsonwebtoken';
-import config from '../config';
+import config from '../config.js';
 
 export const signup = async (req, res) => {
 
@@ -50,5 +50,5 @@ const userFound = await User.findOne({ email: req.body.email }).populate('roles'
             expiresIn: 86400
         });
 
-        res.json({token})    
+        res.json({token})     
 }
