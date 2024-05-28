@@ -1,7 +1,7 @@
 import User from '../models/User.js'
 import Role from '../models/Role.js'
 
-export const createUser = async (req, res) => {
+export const createUser  = async (req, res) => {
     try {
       const { username, email, password, roles } = req.body;
   
@@ -32,6 +32,22 @@ export const createUser = async (req, res) => {
     }
   };
   
-  export const getUsers = async (req, res) => {};
+  export const getUsers = async (req, res) => {
+    const users = await User.find();
+    res.json(users);
+  };
   
-  export const getUser = async (req, res) => {};
+  export const getUser = async (req, res) => {
+    const users = await User.findById(req.params.userId);
+    res.json(users);
+  };
+
+  export const updateUser = async (req, res) => {
+    const user = await User.findByIdAndUpdate(req.params.userId, req.body, {new: true});
+    res.json(user);
+  }
+
+  export const deleteUser = async (req, res) => {
+    const user = await User.findByIdAndDelete(req.params.userId);
+    res.json(user);
+  }
